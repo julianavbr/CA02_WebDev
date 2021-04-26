@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<chocolatedescs>
+  <section name="Chocolate Bars">
+    <opt glutenfree="true">
+      <desc>Milk Chocolate</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt glutenfree="true">
+      <desc>Dark Chocolate (70%)</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt>
+      <desc>White Chocolate</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt>
+      <desc>Milk Chocolate with Honeycomb</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt>
+      <desc>Milk Chocolate with Orange</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt glutenfree="true">
+      <desc>Dark Salted Caramel</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt>
+      <desc>Caramel Crunch</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt>
+      <desc>White Chocolate with Mixed Berries</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt>
+      <desc>White Chocolate with Salted Almond</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt>
+      <desc>White Chocolate with Raspberries</desc>
+      <prc>2.95</prc>
+    </opt>
+    <opt>
+      <desc>White Chocolate with Coconut and Almond</desc>
+      <prc>2.95</prc>
+    </opt>
+  </section>
+  <section name="Assorted Chocolates">
+    <opt glutenfree="true">
+      <desc>Blueberry Panna Cotta</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt glutenfree="true">
+      <desc>Lemon and Almond Parfait</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt>
+      <desc>Red Velvet</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt>
+      <desc>Creme Brulle</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt>
+      <desc>Dark Chocolate Toffee</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt>
+      <desc>Hazelnut Praline</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt>
+      <desc>White Chocolate Truffle</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt>
+      <desc>Caramel Truffle</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt>
+      <desc>Triple Chocolate Truffle</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt>
+      <desc>Milk Chocolate Flake</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt>
+      <desc>White Chocolate Flake</desc>
+      <prc>2.30</prc>
+    </opt>
+    <opt glutenfree="true">
+      <desc>Dark Chocolate Flake (75%) </desc>
+      <prc>2.30</prc>
+    </opt>
+  </section>
+  <section name="Gifts and Others">
+    <opt>
+      <desc>Chocolate Truffle (Box with 12)</desc>
+      <prc>19.50</prc>
+    </opt>
+    <opt>
+      <desc>White Chocolate Mix (Box with 12)</desc>
+      <prc>19.50</prc>
+    </opt>
+    <opt glutenfree="true">
+      <desc>Assorted Box (Box with 12)</desc>
+      <prc>19.50</prc>
+    </opt>
+    <opt>
+      <desc>Dessert Box(Box with 12)</desc>
+      <prc>19.50</prc>
+    </opt>
+    <opt>
+      <desc>Special Box</desc>
+      <prc>19.30</prc>
+    </opt>
+  </section>
+</chocolatedescs>

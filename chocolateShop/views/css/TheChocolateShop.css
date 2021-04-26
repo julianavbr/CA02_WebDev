@@ -1,0 +1,41 @@
+/* Code adapted from the code developed on class by Mikhail @Interactive Web Applications. */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  height: 60px;
+  line-height: 60px; 
+  background-color: #5b3416;
+  font: #fce295;
+}
+table, th, td {
+     border-collapse: collapse;
+     border: 1px solid #5b3416;
+     text-align: left;
+}
+ table {
+     border-collapse: collapse;
+     width:100%;
+}
+ td, th {
+     border: 1px solid #fce295;
+     padding: 0.5rem;
+     text-align: left;
+}
+ th {
+     font-weight: bold;
+}
+.selected {
+            background-color: #5b3416;
+            color: #fce295;
+}
