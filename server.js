@@ -4,8 +4,8 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient
 var path = require("path");
 const res = require("express");
+const config = require('./config');
 
-// app.set('view engine', 'ejs')
 
 
 app.use(bodyParser.urlencoded({extended: true}))
@@ -14,20 +14,17 @@ app.use(express.static(__dirname + '/public'));
 
 const connectionString = 'mongodb+srv://cloudMongo001:ERuPVMnQ7mdDKvn@cluster0.ompkb.mongodb.net/chocolateShop?retryWrites=true&w=majority';
 
-module.exports = exports = function () {
-    console.log("Hello World!");
-};
 
 //     MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
-MongoClient.connect(connectionString, {useUnifiedTopology: true})
+MongoClient.connect(config.dbHost, {useUnifiedTopology: true})
     .then(client => {
         console.log('Connected to Database')
-        const db = client.db('chocolateShop')
-        const quotesCollection = db.collection('chocolate')
+        const db = client.db(config.dbName)
+        const quotesCollection = db.collection(config.dbCollection)
         // app.use(/* ... */)
         app.get('/', (req, res) => {
-            db.collection('quotes').find().toArray()
+            quotesCollection.find().toArray()
                 .then(results => {
                     res.render(__dirname + '/chocolateShop/views/index.html', { quotes: results })
                 })
