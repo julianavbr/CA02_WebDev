@@ -1,14 +1,14 @@
 <!--include extra files-->
-<%- include('include/_header')%>
+<%- include('include/_header') %>
 <!-- Left Column -->
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row">
         <div class="col-lg-12 text-left">
             <p class="lead">Please select where you would like to insert a new product:</p>
         </div>
         <div id="results" class="col-lg-8 order-2 mb-5"></div>
         <div class="col-lg-4 order-1">
-            <form enctype="application/json" action="/quotes" method="POST">
+            <form enctype="application/json" action="/chocolateList" method="POST">
                 <div class="form-group">
                     <select class="form-control" name="main_groups">
                         <option value="0">Chocolate Bars</option>
@@ -28,8 +28,12 @@
             </button>
 
             <p class="text-muted text-center">Please select the product before deleting or updating it it.</p>
-            <button id="update-button" class="btn btn-outline-warning btn-block mt-3" data-mdb-ripple-color="danger">Update
+
+            <button id="update-button" class="btn btn-outline-warning btn-block mt-3" data-mdb-ripple-color="danger">
+                Update
             </button>
+
+            <p></p>
 
             <form>
                 <div class="input-group">
@@ -48,71 +52,66 @@
                 </div>
             </form>
         </div>
-        <!--        <div class="container">-->
-        <div class="row">
-            <div class="col-lg-12 right">
-                <p>Please select the desired options below. To calculate the total, please click the button Total.</p>
-                <table id="menuTable" border="1" class="indent">
-                    <thead>
-                    <tr>
-                        <th>Select</th>
-                        <th>Chocolate Type</th>
-                        <th>Price (in Euro)</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>  <input name="desc0" type="checkbox"/></td>
-                        <td> fghgfhfgh </td>
-                        <td> 4</td>
-                    </tr>
-                    </tbody>
+<!--        <div class="container">-->
+        <form action="/" method="POST">
 
+            <div class="row">
+                <div class="col-lg-12 right">
+                    <p>Please select the desired options below. To calculate the total, please click the button
+                        Total.</p>
+                    <table id="menuTable" border="1" class="table">
+                        <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Chocolate Type</th>
+                            <th>Price (in Euro)</th>
+                        </tr>
+                        </thead>
+                        <!--                    include body of the table-->
+                        <%- include('include/_tablebody') %>
+                    </table>
 
-                    <script src="../main.js"></script>
-
-                </table>
-
+                </div>
             </div>
+        </form>
         </div>
+
+
     </div>
 
 
-</div>
+    <!-- Footer -->
+    <%- include('include/_footer') %>
+
+    <tbody>
+    <!-- JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/table.js"></script>
+    <script src="js/TheChocolateShop.js"></script>
+    <!--<script src="../../../chocolateShop/app.js"></script>-->
+    <script>
 
 
-<!-- Footer -->
-<%- include('include/_footer')%>
-
-<tbody>
-<!-- JavaScript -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/table.js"></script>
-<script src="js/TheChocolateShop.js"></script>
-<!--<script src="../../../chocolateShop/app.js"></script>-->
-<script>
-
-
-    // <!-- to sum the items -->
-    // document.addEventListener("DOMContentLoaded", get_json_data, false); // get_json_data is the function name that will fire on page load
-    window.addEventListener("load", function () {
-        document.forms[1].outputTotal.value = sumTotal('menuTable');
-        document.querySelector("#calcTotal").addEventListener("click", function () {
+        // <!-- to sum the items -->
+        // document.addEventListener("DOMContentLoaded", get_json_data, false); // get_json_data is the function name that will fire on page load
+        window.addEventListener("load", function () {
             document.forms[1].outputTotal.value = sumTotal('menuTable');
+            document.querySelector("#calcTotal").addEventListener("click", function () {
+                document.forms[1].outputTotal.value = sumTotal('menuTable');
+            });
+            <!-- to highlight gluten free options -->
+            document.querySelector("#showGlu").addEventListener("click", function () {
+                isGlutenFree('menuTable', this.checked);
+            });
         });
-        <!-- to highlight gluten free options -->
-        document.querySelector("#showGlu").addEventListener("click", function () {
-            isGlutenFree('menuTable', this.checked);
-        });
-    });
 
-    function errorMsg() {
-        var input = document.getElementById('validationprc').value;
-        if (isNumber(input) == false) {
-            document.getElementById('validationprc').innerHTML("Not a valid option");
+        function errorMsg() {
+            var input = document.getElementById('validationprc').value;
+            if (isNumber(input) == false) {
+                document.getElementById('validationprc').innerHTML("Not a valid option");
+            }
         }
-    }
 
-</script>
+    </script>
 

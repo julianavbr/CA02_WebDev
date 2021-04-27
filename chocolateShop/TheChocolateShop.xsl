@@ -1,6 +1,6 @@
-<!--<?xml version="1.0"?> -->
-<!--<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">-->
-<!--<xsl:template match="/">-->
+<?xml version="1.0"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="/">
 <!--&lt;!&ndash; Code adapted from the code developed on class by Mikhail @Interactive Web Applications. &ndash;&gt;-->
 <!--    <html>-->
 <!--        <head>-->
@@ -48,4 +48,4 @@
 <!--            </body>-->
 <!--        </html>-->
 <!--    </xsl:template>-->
-<!--</xsl:stylesheet>-->
+</xsl:stylesheet>
