@@ -4,7 +4,7 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient
 var path = require("path");
 const res = require("express");
-const config = require('./config');
+const config = require('./database/config');
 
 
 
@@ -12,9 +12,15 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
-const connectionString = 'mongodb+srv://cloudMongo001:ERuPVMnQ7mdDKvn@cluster0.ompkb.mongodb.net/chocolateShop?retryWrites=true&w=majority';
+app.set('view engine', 'ejs');
+app.set('chocolateShop', path.resolve(__dirname,"chocolateShop/views"));
+
+//css and js
+app.use('/css', express.static(path.resolve(__dirname,"public/css")))
+app.use('/js', express.static(path.resolve(__dirname,"public/js")))
 
 
+// const connectionString = 'mongodb+srv://cloudMongo001:ERuPVMnQ7mdDKvn@cluster0.ompkb.mongodb.net/chocolateShop?retryWrites=true&w=majority';
 //     MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
 MongoClient.connect(config.dbHost, {useUnifiedTopology: true})
@@ -63,8 +69,7 @@ MongoClient.connect(config.dbHost, {useUnifiedTopology: true})
 
         }).catch(console.error)
 
-        app.set('views', './views');
-        app.set('view engine', 'html');
+
         app.get('/api', (req, res) => res.send('Its working!'));
 
         app.listen(process.env.port || 4000, function () {
@@ -75,10 +80,8 @@ MongoClient.connect(config.dbHost, {useUnifiedTopology: true})
         app.listen(3000, function () {
             console.log('listening on 3000')
         })
-// app.post('/quotes', (req, res) => {
-//     console.log(req.body)
-// })
 
         app.get('/', (req, res) => {
-            res.sendFile(__dirname + '/chocolateShop/views/index.html')
+            // res.sendFile(__dirname + '/chocolateShop/index.html')
+            res.render(__dirname + '/chocolateShop/index.ejs')
         })

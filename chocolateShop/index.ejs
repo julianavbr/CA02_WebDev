@@ -1,50 +1,5 @@
-<!-- Code adapted from the code developed on class by Mikhail @Interactive Web Applications. -->
-<!DOCTYPE html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>The Chocolate Shop</title>
-
-    <!-- Bootstrap CSS -->
-    <!--    <link rel="stylesheet" type="text/css" href="../../../chocolateShop/views/css/bootstrap.min.css">-->
-    <!--    <link rel="stylesheet" type="text/css" href="../../../chocolateShop/views/css/TheChocolateShop.css">-->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/TheChocolateShop.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<!-- header -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">The Chocolate Shop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<!--include extra files-->
+<%- include('include/_header')%>
 <!-- Left Column -->
 <div class="container">
     <div class="row">
@@ -105,9 +60,13 @@
                         <th>Price (in Euro)</th>
                     </tr>
                     </thead>
-                    <script>
-                      <app-root></app-root>
-                    </script>
+                    <tbody>
+                    <tr>
+                        <td>  <input name="desc0" type="checkbox"/></td>
+                        <td> fghgfhfgh </td>
+                        <td> 4</td>
+                    </tr>
+                    </tbody>
 
 
                     <script src="../main.js"></script>
@@ -123,17 +82,15 @@
 
 
 <!-- Footer -->
-<footer class="footer">
-    <div class="container text-center"><span class="text-muted">The Chocolate Shop&copy; 2020</span></div>
-</footer>
+<%- include('include/_footer')%>
 
 <tbody>
 <!-- JavaScript -->
-<script src="../../../chocolateShop/js/jquery.min.js"></script>
-<script src="../../../chocolateShop/js/bootstrap.bundle.min.js"></script>
-<script src="../../../chocolateShop/js/table.js"></script>
-<script src="../../../chocolateShop/js/TheChocolateShop.js"></script>
-<script src="../../../chocolateShop/app.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/table.js"></script>
+<script src="js/TheChocolateShop.js"></script>
+<!--<script src="../../../chocolateShop/app.js"></script>-->
 <script>
 
 
@@ -158,6 +115,4 @@
     }
 
 </script>
-</body>
 
-</html>
