@@ -10,8 +10,9 @@ const connectDB = async () => {
             useUnifiedTopology: true,
             useFindAndModify: false,
             useCreateIndex: true
-        })
 
+        })
+console.log("Deu certo")
     }catch(err){
         console.log(err);
         process.exit(1);
