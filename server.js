@@ -5,7 +5,7 @@ const app = express();
 var path = require("path");
 const connectDB = require('./server/database/connect');
 const controller = require('./server/controller/controller')
-
+const services = require("./server/services/renders");
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
@@ -30,11 +30,7 @@ app.listen(3000, function () {
     console.log('listening on 3000')
 })
 
-app.post('/chocolateList', controller.create);
+// app.post('/chocolateList', controller.create);
 
-
-app.get('/', (req, res) => {
-    // res.sendFile(__dirname + '/chocolateShop/index.html')
-    res.render(__dirname + '/chocolateShop/index.ejs')
-})
+app.get('/', services.homeRoutes);
 
