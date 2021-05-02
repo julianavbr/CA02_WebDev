@@ -5,7 +5,7 @@ var path = require("path");
 const connectDB = require('./server/database/connect');
 const controller = require('./server/controller/controller')
 const services = require("./server/services/renders");
-
+var port = process.env.PORT;
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
@@ -21,12 +21,12 @@ app.use('/js', express.static(path.resolve(__dirname, "public/js")))
 // mongodb connection
 connectDB();
 
-app.listen(process.env.port || 4000, function () {
-    console.log('now listening for requests');
+// app.listen(port, function () {
+//     console.log('now listening for requests');
 
-});
+// });
 
-app.listen(process.env.port || 3000, function () {
+app.listen(port, function () {
     console.log('listening on 3000')
 })
 
