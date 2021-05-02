@@ -1,11 +1,10 @@
 var ChocolateDB = require('../model/model');
 const connect = require('../database/connect')
-
+require('../../public/js/TheChocolateShop')
 
 // create and save new user
 exports.create = (req,res)=>{
     // validate request
-    console.log("Chegou");
     if(!req.body){
         res.status(400).send({ message : "Content can not be empty!"});
         return;
@@ -59,52 +58,44 @@ exports.find = (req, res)=>{
                 res.send(choc)
             })
             .catch(err => {
-                res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
+                res.status(500).send({ message : err.message || "The chocolate was not found" })
             })
     }
 
 
 }
 
-// Update a new idetified user by user id
+//Updates the item(s) selected
 exports.update = (req, res)=>{
-    if(!req.body){
-        return res
-            .status(400)
-            .send({ message : "Data to update can not be empty"})
-    }
-
-    const id = req.params.id;
-    ChocolateDB.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
-        .then(data => {
-            if(!data){
-                res.status(404).send({ message : `Cannot Update user with ${id}. Maybe user not found!`})
-            }else{
-                res.send(data)
+    ChocolateDB.findOneAndUpdate(
+        { item: 'Milk Chocolate' },
+        {
+            $set: {
+                item: req.body.item,
+                price: req.body.price
             }
+        },
+        {
+            upsert: true
+        }
+    )
+        .then( res => {
+            console.log(res)
         })
-        .catch(err =>{
-            res.status(500).send({ message : "Error Update user information"})
-        })
+        .catch(error => console.error(error))
 }
+
+// let list = ["Milk Chocolate"]
+//
+//     console.log(list)
+// for(let i = 0; i < list.length; i++) {
 
 // Delete a user with specified user id in the request
-exports.delete = (req, res)=>{
-    const id = req.params.id;
-
-    ChocolateDB.findByIdAndDelete(id)
-        .then(data => {
-            if(!data){
-                res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
-            }else{
-                res.send({
-                    message : "User was deleted successfully!"
-                })
-            }
-        })
-        .catch(err =>{
-            res.status(500).send({
-                message: "Could not delete User with id=" + id
-            });
-        });
-}
+exports.delete = function(req, res) {
+    ChocolateDB.deleteOne({item: "Milk Chocolate"}, function (err, chocolates) {
+        if (err) {
+            res.status(400).json(err);
+        }
+        res.json(chocolates);
+    });
+};

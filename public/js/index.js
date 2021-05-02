@@ -26,12 +26,12 @@ $("#update_chocolate").submit(function(event){
 })
 
 if(window.location.pathname == "/"){
+    console.log("tedasddsfdtse")
     $ondelete = $(".table tbody td a.delete");
     $ondelete.click(function(){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `http://localhost:3000/${id}`,
             "method" : "DELETE"
         }
 

@@ -28,6 +28,26 @@ function sumTotal(idMenuTable) {
     // return the price as a decimal number with 2 decimal places
     return sumT.toFixed(2);
 };
+
+exports.getName = () =>  {
+    let selectedChocolates = [];
+    var i = 0;
+    var optList = document.querySelectorAll('input');
+    for (i = 0; i < optList.length; i++) {
+        if (optList[i].checked) {
+            var parent = getParentTag(optList[i], 'TR');
+            // get the second column (name)
+            var objDesc = parent.getElementsByTagName('TD')[1];
+            // firstChild = name
+            selectedChocolates.push(objDesc.firstChild.data);
+        }
+        ;
+    }
+    ;
+    // return the array of chocolates that were selected.
+return selectedChocolates;
+};
+
 //highlights all the gluten free options
 function isGlutenFree(idTable, bShowGlu) {
     var i = 0;
@@ -48,5 +68,6 @@ function isGlutenFree(idTable, bShowGlu) {
         };
     };
 };
+
 
 

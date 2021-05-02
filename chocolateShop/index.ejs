@@ -1,5 +1,7 @@
 <!--include extra files-->
 <%- include('include/_header') %>
+
+
 <!-- Left Column -->
 <div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row">
@@ -18,7 +20,7 @@
                     <input class="form-control mt-3" id="validationdesc" type="text" name="item"
                            placeholder="Chocolate Description" required>
                     <input class="form-control mt-3" id="validationprc" type="text" name="price"
-                           onsubmit="return errorMsg();" placeholder="Price (in Euros)" required>
+                           onsubmit=return errorMsg(); placeholder="Price (in Euros)" required>
                     <button type="submit" class="btn btn-outline-dark btn-block mt-3" data-mdb-ripple-color="dark">Add a
                         Product
                     </button>
@@ -29,7 +31,7 @@
 
             <p class="text-muted text-center">Please select the product before deleting or updating it it.</p>
 
-            <button id="update-button" class="btn btn-outline-warning btn-block mt-3" data-mdb-ripple-color="danger">
+            <button id="update" class="btn btn-outline-warning btn-block mt-3" data-mdb-ripple-color="danger">
                 Update
             </button>
 
@@ -52,67 +54,102 @@
                 </div>
             </form>
         </div>
-<!--        <div class="container">-->
-<!--        <form action="/update" method="POST">-->
+        <!--        <div class="container">-->
+        <!--        <form action="/update" method="POST">-->
 
-            <div class="row">
-                <div class="col-lg-12 right">
-                    <p>Please select the desired options below. To calculate the total, please click the button
-                        Total.</p>
-                    <table id="menuTable" border="1" class="table">
-                        <thead>
-                        <tr>
-                            <th>Select</th>
-                            <th>Chocolate Type</th>
-                            <th>Price (in Euro)</th>
-                        </tr>
-                        </thead>
-                        <!--                    include body of the table-->
-                        <%- include('include/_tablebody') %>
-                    </table>
+        <div class="row">
+            <div class="col-lg-12 right">
+                <p>Please select the desired options below. To calculate the total, please click the button
+                    Total.</p>
+                <table id="menuTable" border="1" class="table">
+                    <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Chocolate Type</th>
+                        <th>Price (in Euro)</th>
+                    </tr>
+                    </thead>
+                    <!--                    include body of the table-->
+                    <%- include('include/_tablebody') %>
+                </table>
 
-                </div>
             </div>
-        </form>
-<!--        <%=chocolates%>-->
         </div>
-
-
+        </form>
     </div>
 
 
-    <!-- Footer -->
-    <%- include('include/_footer') %>
-
-    <tbody>
-    <!-- JavaScript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/table.js"></script>
-    <script src="js/TheChocolateShop.js"></script>
-    <!--<script src="../../../chocolateShop/app.js"></script>-->
-    <script>
+</div>
 
 
-        // <!-- to sum the items -->
-        // document.addEventListener("DOMContentLoaded", get_json_data, false); // get_json_data is the function name that will fire on page load
-        window.addEventListener("load", function () {
+<!-- Footer -->
+<%- include('include/_footer') %>
+
+<tbody>
+<!-- JavaScript -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/table.js"></script>
+<script src="js/TheChocolateShop.js"></script>
+<script src="public/js/main.js"></script>
+<!--<script src="../../../chocolateShop/app.js"></script>-->
+<script>
+
+    const deleteB = document.querySelector('#delete')
+    deleteB.addEventListener('click', _ => {
+        fetch('/', {
+            method: 'delete',
+
+        })
+    })
+    const update = document.querySelector('#update')
+
+
+    update.addEventListener('click', _ => {
+        fetch('/', {
+
+            method: 'put',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                main_groups: document.getElementsByName("main_groups")[0].value,
+                item: document.getElementsByName("item")[0].value,
+                price: document.getElementsByName("price")[0].value,
+
+            })
+        })
+    })
+    // <!-- to sum the items -->
+    // document.addEventListener("DOMContentLoaded", get_json_data, false); // get_json_data is the function name that will fire on page load
+    window.addEventListener("load", function () {
+        document.forms[1].outputTotal.value = sumTotal('menuTable');
+        document.querySelector("#calcTotal").addEventListener("click", function () {
             document.forms[1].outputTotal.value = sumTotal('menuTable');
-            document.querySelector("#calcTotal").addEventListener("click", function () {
-                document.forms[1].outputTotal.value = sumTotal('menuTable');
-            });
-            <!-- to highlight gluten free options -->
-            document.querySelector("#showGlu").addEventListener("click", function () {
-                isGlutenFree('menuTable', this.checked);
-            });
+
+        });
+        <!-- to highlight gluten free options -->
+        document.querySelector("#showGlu").addEventListener("click", function () {
+            isGlutenFree('menuTable', this.checked);
+        });
+        document.querySelector("#getNames").addEventListener("click", function () {
+            getItems('menuTable', this.checked);
+            const list = getItems();
+
         });
 
-        function errorMsg() {
-            var input = document.getElementById('validationprc').value;
-            if (isNumber(input) == false) {
-                document.getElementById('validationprc').innerHTML("Not a valid option");
-            }
-        }
+    });
 
-    </script>
+
+    <% function errorMsg() { %>
+    <%= input = document.getElementById('validationprc').value %>;
+
+
+
+    <% if (isNumber(input) == false) { %>
+
+    <% document.getElementById('validationprc').innerHTML("Not a valid option"); %>
+
+    <% } %>
+    <% } %>
+
+</script>
 

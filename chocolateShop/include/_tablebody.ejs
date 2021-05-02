@@ -3,7 +3,8 @@
 <tr>
     <% for(var i = 0; i < chocolates.length; i++) { %>
 <tr>
-    <td align="center"><input name="desc0" type="checkbox"/></td>
+    <td align="center"> <input name = "desc0" data-id= <%=chocolates[i]._id%> type="checkbox"/></td>
+    <script>console.log(chocolates[i]._id)</script>
     <td><%= chocolates[i].item %></td>
     <td><%= chocolates[i].price %></td>
 
