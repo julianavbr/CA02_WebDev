@@ -5,7 +5,7 @@ const connect = require('../database/connect')
 // create and save new user
 exports.create = (req,res)=>{
     // validate request
-
+    console.log("Chegou");
     if(!req.body){
         res.status(400).send({ message : "Content can not be empty!"});
         return;
@@ -13,6 +13,7 @@ exports.create = (req,res)=>{
 
     // new user
     const choc = new ChocolateDB({
+
         group : req.body.main_groups,
         item : req.body.item,
         price: req.body.price,
@@ -28,13 +29,13 @@ exports.create = (req,res)=>{
         })
         .catch(err =>{
             res.status(500).send({
-                message : err.message || "Some error occurred while creating a create operation"
+                message : err.message || "Please check it again"
             });
         });
 
 }
 
-// retrieve and return all users/ retrive and return a single user
+// retrieve and return all users/ retrieve and return a single user
 exports.find = (req, res)=>{
 
     if(req.query.id){
@@ -43,13 +44,13 @@ exports.find = (req, res)=>{
         ChocolateDB.findById(id)
             .then(data =>{
                 if(!data){
-                    res.status(404).send({ message : "Not found user with id "+ id})
+                    res.status(404).send({ message : "This chocolate was not found"})
                 }else{
                     res.send(data)
                 }
             })
             .catch(err =>{
-                res.status(500).send({ message: "Erro retrieving user with id " + id})
+                res.status(500).send({ message: "The chocolate was not found"})
             })
 
     }else{

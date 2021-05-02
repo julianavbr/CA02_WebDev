@@ -14,7 +14,7 @@ $("#update_chocolate").submit(function(event){
 
 
     var request = {
-        "url" : `http://localhost:3000/chocolateList/${data.id}`,
+        "url" : `http://localhost:3000/${data.id}`,
         "method" : "PUT",
         "data" : data
     }
@@ -31,7 +31,7 @@ if(window.location.pathname == "/"){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `http://localhost:3000/chocolateList/${id}`,
+            "url" : `http://localhost:3000/${id}`,
             "method" : "DELETE"
         }
 

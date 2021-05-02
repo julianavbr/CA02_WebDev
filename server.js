@@ -30,7 +30,7 @@ app.listen(3000, function () {
     console.log('listening on 3000')
 })
 
-// app.post('/chocolateList', controller.create);
+app.post('/', controller.create);
 
 app.get('/', services.homeRoutes);
-
+app.delete('/:id', controller.delete);

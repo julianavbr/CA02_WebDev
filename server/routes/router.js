@@ -12,8 +12,8 @@ var path = require("path");
 // })
 
 //API
-route.post('/chocolateList', controller.create);
-route.get('/chocolateList', controller.find);
-route.put('/chocolateList:id', controller.update);
-route.delete('/api/chocolate/:id', controller.delete);
+route.post('/', controller.create);
+route.get('/', controller.find);
+route.put('/:id', controller.update);
+route.delete('/:id', controller.delete);
 module.exports = route;
