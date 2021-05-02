@@ -5,11 +5,14 @@ var path = require("path");
 const connectDB = require('./server/database/connect');
 const controller = require('./server/controller/controller')
 const services = require("./server/services/renders");
-var port = process.env.PORT;
+
+app.set( 'port', ( process.env.PORT || 8000 ));
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
+
+
 
 app.set('view engine', 'ejs');
 // app.set('chocolateShop', path.resolve(__dirname,"chocolateShop/views"));
@@ -22,8 +25,8 @@ app.use('/js', express.static(path.resolve(__dirname, "public/js")))
 connectDB();
 
 
-app.listen(port, function () {
-    console.log('listening on ${port}')
+app.listen(app.get( 'port' ), function () {
+    console.log('listening on '+ app.get( 'port' ))
 })
 
 app.post('/', controller.create);
