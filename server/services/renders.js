@@ -1,4 +1,3 @@
-const axios = require('axios');
 var chocolates = require('../model/model')
 
 exports.homeRoutes = function(req, res) {
