@@ -21,12 +21,12 @@ app.use('/js', express.static(path.resolve(__dirname, "public/js")))
 // mongodb connection
 connectDB();
 
-app.listen(process.env.port || 4000, function () {
+app.listen(process.env.PORT || 4000, function () {
     console.log('now listening for requests');
 
 });
 
-app.listen(process.env.port || 3000, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log('listening on 3000')
 })
 
