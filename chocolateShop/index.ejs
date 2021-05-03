@@ -94,7 +94,7 @@
 <script src="js/TheChocolateShop.js"></script>
 
 <script>
-        const deleteButton = document.querySelector('#delete')
+        var deleteButton = document.querySelector('#delete')
 
     deleteButton.addEventListener('click', _ => {
         fetch('/', {
@@ -102,7 +102,7 @@
         })
     })
 
-    const update = document.querySelector('#update')
+    var update = document.querySelector('#update')
     update.addEventListener('click', _ => {
         fetch('/', {
             method: 'put',
