@@ -1,10 +1,6 @@
 <!--include extra files-->
 <%- include('include/_header') %>
 
-    <script>
-        <script defer src= "../public/js/TheChocolateShop.js"
-    </script>
-
 <!-- Right Column -->
 <div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row">
@@ -91,36 +87,22 @@
 
 <tbody>
 <!-- JavaScript -->
-<script defer src= "../public/js/TheChocolateShop.js"
+
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/table.js"></script>
-<script src="../public/js/TheChocolateShop.js"></script>
-<!--<script src="../../../chocolateShop/app.js"></script>-->
+<script src="js/TheChocolateShop.js"></script>
+
 <script>
-   
-  //  validation to catch if it is not a valid number
+        const deleteButton = document.querySelector('#delete')
 
-  function errorMsg() {
-    input = document.getElementById('validationprc').value;
-if (isNumber(input) == false) {
-    document.getElementById('validationprc').innerHTML("Not a valid option");
-
-}
-}
-//trigger button to activate the method delete
- const deleteButton = document.querySelectorbyId('#delete')
     deleteButton.addEventListener('click', _ => {
         fetch('/', {
             method: 'delete',
         })
-
-        location.reload(true); //to reload the page after it is deleted
     })
 
-
-//trigger button to activate the method update
- const update = document.querySelector('#update')
+    const update = document.querySelector('#update')
     update.addEventListener('click', _ => {
         fetch('/', {
             method: 'put',
@@ -129,25 +111,21 @@ if (isNumber(input) == false) {
                 main_groups: document.getElementsByName("main_groups")[0].value,
                 item: document.getElementsByName("item")[0].value,
                 price: document.getElementsByName("price")[0].value,
-                choclist: getItems 
+
 
             })
         })
-        location.reload(true); //to reload the page after it is updated
 
-    })    
-
-
+    })
 
     // <!-- to sum the items -->
-    // document.addEventListener("DOMContentLoaded", get_json_data, false); // get_json_data is the function name that will fire on page load
-    window.addEventListener("load", function () {
+      window.addEventListener("load", function () {
         // document.forms[1].outputTotal.value = sumTotal('menuTable');
         document.querySelector("#calcTotal").addEventListener("click", function () {
             document.forms[1].outputTotal.value = sumTotal('menuTable');
 
         });
-    //to highlight gluten-free options
+        //to highlight gluten free options
         document.querySelector("#showGlu").addEventListener("click", function () {
             isGlutenFree('menuTable', this.checked);
         });
@@ -156,7 +134,10 @@ if (isNumber(input) == false) {
             const list = getItems();
 
         });
-  });
+
+    });
+
+
 
 </script>
 
