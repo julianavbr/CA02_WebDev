@@ -106,8 +106,9 @@ console.log(reqitem)
 }
 
 //delete chocolates
-let reqitem = "Milk Chocolate with Coconut"
+
 exports.delete = function(req, res) {
+    let reqitem = "Milk Chocolate with Coconut"
     ChocolateDB.deleteOne({item: reqitem}, function (err, chocolates) {
         if (err) {
             res.status(400).json(err);
