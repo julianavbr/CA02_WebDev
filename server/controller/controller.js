@@ -112,6 +112,7 @@ exports.delete = function(req, res) {
         if (err) {
             res.status(400).json(err);
         }
-        res.redirect('/');
+       
     });
+     res.redirect('/');
 };
