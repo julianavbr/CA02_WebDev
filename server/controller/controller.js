@@ -32,7 +32,7 @@ exports.create = (req,res)=>{
         isGlutenFree : req.body.glutenfree
     })
 
-    // save user in the database
+    // save it in the db
     choc
         .save(choc)
         .then(data => {
@@ -78,10 +78,13 @@ exports.find = (req, res)=>{
 
 }
 
+
+
+
 //Updates the item(s) selected
 exports.update = (req, res)=>{
     let reqitems = choco.getName;
-let reqitem = reqitems[0];
+reqitem = "Milk Chocolate"
 console.log(reqitem)
     ChocolateDB.findOneAndUpdate(
         { item: reqitem},
@@ -92,6 +95,7 @@ console.log(reqitem)
             }
         },
         {
+            // insert if none selected
             upsert: true
         }
     )
@@ -101,6 +105,8 @@ console.log(reqitem)
         .catch(error => console.error(error))
 }
 
+//delete chocolates
+reqitem = "Milk Chocolate with Coconut"
 exports.delete = function(req, res) {
     ChocolateDB.deleteOne({item: reqitem}, function (err, chocolates) {
         if (err) {

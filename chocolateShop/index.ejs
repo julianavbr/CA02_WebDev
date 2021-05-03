@@ -23,7 +23,7 @@
                     <input class="form-control mt-3" id="validationdesc" type="text" name="item"
                            placeholder="Chocolate Description" required>
                     <input class="form-control mt-3" id="validationprc" type="" name="price"
-                         onsubmit="errorMsg();"; placeholder="Price (in Euros)" required>
+                         placeholder="Price (in Euros)" required>
                     <button type="submit" id= "addproduct" class="btn btn-outline-dark btn-block mt-3" data-mdb-ripple-color="dark">Add a
                         Product
                     </button>
@@ -99,24 +99,27 @@
 <!--<script src="../../../chocolateShop/app.js"></script>-->
 <script>
    
-    <!-- validation to catch if it is not a valid number -->
- function errorMsg() {
+  //  validation to catch if it is not a valid number
+
+  function errorMsg() {
     input = document.getElementById('validationprc').value;
 if (isNumber(input) == false) {
     document.getElementById('validationprc').innerHTML("Not a valid option");
 
 }
 }
-<!-- trigger button to activate the method delete -->
+//trigger button to activate the method delete
  const deleteButton = document.querySelectorbyId('#delete')
     deleteButton.addEventListener('click', _ => {
         fetch('/', {
             method: 'delete',
         })
+
+        location.reload(true); //to reload the page after it is deleted
     })
 
 
-<!-- trigger button to activate the method update -->
+//trigger button to activate the method update
  const update = document.querySelector('#update')
     update.addEventListener('click', _ => {
         fetch('/', {
@@ -130,6 +133,7 @@ if (isNumber(input) == false) {
 
             })
         })
+        location.reload(true); //to reload the page after it is updated
 
     })    
 
