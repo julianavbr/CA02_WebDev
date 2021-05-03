@@ -1,15 +1,29 @@
+// class to pull the requests regarding CRUD in the database
+
 var ChocolateDB = require('../model/model');
 const connect = require('../database/connect')
+const choco = require('../../public/js/TheChocolateShop')
 
-// create and save new user
+// create and save new chocolate
 exports.create = (req,res)=>{
     // validate request
+
+//check if is empty
     if(!req.body){
         res.status(400).send({ message : "Content can not be empty!"});
         return;
+        //check if the price is a number
+    }if(isNaN(req.body.price)){
+      console.log("Not a valid option");
+       res.redirect('/') ;
+        //check if the description is not a number
+    }  if(!isNaN(req.body.item)){
+       console.log("Not a valid option");
+       res.redirect('/') ;
+        
     }
-
-    // new user
+        
+    // new chocolate
     const choc = new ChocolateDB({
 
         group : req.body.main_groups,
@@ -33,7 +47,7 @@ exports.create = (req,res)=>{
 
 }
 
-// retrieve and return all users/ retrieve and return a single user
+// retrieve and return the list of chocolates or return a single one
 exports.find = (req, res)=>{
 
     if(req.query.id){
@@ -63,9 +77,12 @@ exports.find = (req, res)=>{
 
 
 }
-let reqitem = "Milk Chocolate";
+
 //Updates the item(s) selected
 exports.update = (req, res)=>{
+    let reqitems = choco.getName;
+let reqitem = reqitems[0];
+console.log(reqitem)
     ChocolateDB.findOneAndUpdate(
         { item: reqitem},
         {
@@ -79,7 +96,7 @@ exports.update = (req, res)=>{
         }
     )
         .then( res => {
-            console.log(res)
+            res.redirect('/');
         })
         .catch(error => console.error(error))
 }
@@ -89,6 +106,6 @@ exports.delete = function(req, res) {
         if (err) {
             res.status(400).json(err);
         }
-        res.json(chocolates);
+        res.redirect('/');
     });
 };

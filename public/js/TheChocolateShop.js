@@ -29,8 +29,10 @@ function sumTotal(idMenuTable) {
     return sumT.toFixed(2);
 };
 
-exports.getName = () =>  {
-    let selectedChocolates = [];
+
+   //get the list of selected chocolates (array)
+function getName () {
+    var selectedChocolates = [];
     var i = 0;
     var optList = document.querySelectorAll('input');
     for (i = 0; i < optList.length; i++) {
@@ -45,8 +47,13 @@ exports.getName = () =>  {
     }
     ;
     // return the array of chocolates that were selected.
+    console.log(selectedChocolates)
 return selectedChocolates;
+exports.selectedChocolates = selectedChocolates;
 };
+
+
+
 
 //highlights all the gluten free options
 function isGlutenFree(idTable, bShowGlu) {

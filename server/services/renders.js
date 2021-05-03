@@ -1,5 +1,7 @@
+//to render the redirection of files that will deal with the database
 var chocolates = require('../model/model')
 
+//to load the index file
 exports.homeRoutes = function(req, res) {
     chocolates.find({}, function (err, chocolates) {
         if (err) {
@@ -9,15 +11,16 @@ exports.homeRoutes = function(req, res) {
     });
 };
 
-
+//to add a new chocolate
 exports.create = (req, res) =>{
     res.render('create');
 }
 
-
+//to delete a new chocolate
 exports.delete = (req, res) =>{
     res.render('delete');
 }
+//to update a new chocolate
 exports.update = (req, res) =>{
     res.render('update');
 }
