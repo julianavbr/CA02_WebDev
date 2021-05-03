@@ -1,6 +1,5 @@
 var ChocolateDB = require('../model/model');
 const connect = require('../database/connect')
-require('../../public/js/TheChocolateShop')
 
 // create and save new user
 exports.create = (req,res)=>{
@@ -64,11 +63,11 @@ exports.find = (req, res)=>{
 
 
 }
-
+let reqitem = "Milk Chocolate";
 //Updates the item(s) selected
 exports.update = (req, res)=>{
     ChocolateDB.findOneAndUpdate(
-        { item: 'Milk Chocolate' },
+        { item: reqitem},
         {
             $set: {
                 item: req.body.item,
@@ -85,14 +84,8 @@ exports.update = (req, res)=>{
         .catch(error => console.error(error))
 }
 
-// let list = ["Milk Chocolate"]
-//
-//     console.log(list)
-// for(let i = 0; i < list.length; i++) {
-
-// Delete a user with specified user id in the request
 exports.delete = function(req, res) {
-    ChocolateDB.deleteOne({item: "Milk Chocolate"}, function (err, chocolates) {
+    ChocolateDB.deleteOne({item: reqitem}, function (err, chocolates) {
         if (err) {
             res.status(400).json(err);
         }

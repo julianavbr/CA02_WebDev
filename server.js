@@ -1,10 +1,14 @@
+
 const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
-var path = require("path");
 const connectDB = require('./server/database/connect');
 const controller = require('./server/controller/controller')
 const services = require("./server/services/renders");
+require('dotenv').config()
+const path = require('path');
+
+const dbUrl = process.env.CA02_WEB
 
 app.set( 'port', ( process.env.PORT || 8000 ));
 
@@ -15,7 +19,6 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.set('view engine', 'ejs');
-// app.set('chocolateShop', path.resolve(__dirname,"chocolateShop/views"));
 
 //css and js
 app.use('/css', express.static(path.resolve(__dirname, "public/css")))
@@ -30,6 +33,7 @@ app.listen(app.get( 'port' ), function () {
 })
 
 app.post('/', controller.create);
-app.put('/', controller.update)
+// app.put('/', controller.update)
 app.get('/', services.homeRoutes);
 app.delete('/', controller.delete);
+

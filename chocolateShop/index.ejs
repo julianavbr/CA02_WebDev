@@ -91,37 +91,36 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/table.js"></script>
 <script src="js/TheChocolateShop.js"></script>
-<script src="public/js/main.js"></script>
 <!--<script src="../../../chocolateShop/app.js"></script>-->
 <script>
+    const deleteButton = document.querySelector('#delete')
 
-    const deleteB = document.querySelector('#delete')
-    deleteB.addEventListener('click', _ => {
+    deleteButton.addEventListener('click', _ => {
         fetch('/', {
             method: 'delete',
-
         })
     })
+
     const update = document.querySelector('#update')
-
-
     update.addEventListener('click', _ => {
         fetch('/', {
-
             method: 'put',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 main_groups: document.getElementsByName("main_groups")[0].value,
                 item: document.getElementsByName("item")[0].value,
                 price: document.getElementsByName("price")[0].value,
 
+
             })
         })
+
     })
+
     // <!-- to sum the items -->
     // document.addEventListener("DOMContentLoaded", get_json_data, false); // get_json_data is the function name that will fire on page load
     window.addEventListener("load", function () {
-        document.forms[1].outputTotal.value = sumTotal('menuTable');
+        // document.forms[1].outputTotal.value = sumTotal('menuTable');
         document.querySelector("#calcTotal").addEventListener("click", function () {
             document.forms[1].outputTotal.value = sumTotal('menuTable');
 
